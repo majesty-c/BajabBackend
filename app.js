@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const app = express();
 app.use(express.json());
 
@@ -19,7 +20,7 @@ app.post("/bfhl", (req, res) => {
   const alphabet = dt.filter((i) => {
     return isNaN(i);
   });
-  console.log(user[0].number);
+
   for (var i in num) {
     user[0].number.push(num[i]);
   }
@@ -30,6 +31,6 @@ app.post("/bfhl", (req, res) => {
   res.status(200).json(user);
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`port is running at port ${process.env.PORT}`);
 });
